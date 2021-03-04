@@ -1,0 +1,45 @@
+Film as p # Table documentation comment 2
+------------
+filmID PK int
+title string(200)
+author string(200)
+releaseDate datetime
+synopsis text
+price float
+type string(200)
+image string(link)
+citizenship string(200)
+
+Book as b # Table documentation comment 2
+------------
+bookID PK int
+title string(200)
+author string(200)
+releaseDate datetime
+cover text
+price float
+type string(200)
+image string(link)
+citizenship string(200)
+
+Critic as c # Table documentation comment 2
+------------
+criticID PK int
+pseudo string(200)
+
+critique as cr # Table documentation comment 2
+------------
+critiqueID PK int
+criticID int fk >- Critic.criticID
+critique text
+filmID int FK >- Film.filmID
+bookID int FK >- Book.bookID
+
+Note as n # Table documentation comment 2
+------------
+noteID PK int
+value integer
+filmID int FK >- Film.filmID
+bookID int FK >- Book.bookID
+critiqueID int fk - Critique.critiqueID
+criticID int fk >- Critic.criticID
