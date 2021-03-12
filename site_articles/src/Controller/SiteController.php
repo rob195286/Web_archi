@@ -56,11 +56,18 @@ class SiteController extends AbstractController
     public function film($id): Response
     {
         $repo = $this->getDoctrine()->getRepository(Film::class);
-        $article = $repo->find($id);
+        $film = $repo->find($id);
+        $note = 0;
+        foreach ($film->getNotes() as $value) {
+            $note = $note+$value->getValue();
+        }
+        $note = intval($note/count($film->getNotes()));
+
 
         return $this->render('site/film.html.twig', [
             'controller_name' => 'SiteController',
-            'film' => $article
+            'film' => $film,
+            'note' => $note
         ]);
     }
 }
