@@ -1,46 +1,25 @@
 {% extends "base.html.twig" %}
 {% block body %}
- 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Films</th>
-      <th scope="col">Livres</th>
-    </tr>
-  </thead>
 
-  <tbody>
+<h1>Page de critique des films</h1>
 
-    {% for film in filmsP1 %}
-    <tr>
-      <th scope="row">
-        {{ film.title }}
-            {{ film.title }}
-            {{ film.type }}
-            <a href="{{ path('show_article') }}">consulter</a>
-      </th>
-    </tr>
-    
+<section class="articles">
+    {% for film in films %}
+      <article>
+        <h3> {{ film.title }}</h3>  
+        <div>
+          <img src="http://placehold.it/200x100">
+        </div>
+        <p>Auteur : {{ film.author }}</p>
+        <p>Type : {{ film.type }}</p>
+        <p>Date de sortie : {{ film.releaseDate | date('d/m/y')}}</p>
+        <p>Nationnalité : {{ film.citizenship }}</p>
+        <a href="{{ path('show_critique_film', {'id':film.id}) }}">Lire la suite</a>
+        <hr>
+      </article>
     {% endfor %}
-
-    <tr class="table-primary">
-      <th scope="row">Active</th>
-      <td>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Default</th>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-primary">
-      <th scope="row">Primary</th>
-      <td>Column content</td>
-    </tr>
   </tbody>
-</table>  
-
-<hr>
-
+</section>
 
 
 {% endblock %}

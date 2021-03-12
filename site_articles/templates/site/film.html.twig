@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<h1>{{ film.title }}</h1>
+<div>
+    <img src="http://placehold.it/350x200" border="0" ALIGN="Left">
+    <p> &nbsp; Auteur : {{ film.author }}</p>
+    <p> &nbsp; Type : {{ film.type }}</p>
+    <p> &nbsp; Date de sortie : {{ film.releaseDate | date('d/m/y')}}</p>
+    <p> &nbsp; Nationnalité : {{ film.citizenship }}</p>
+    <p> &nbsp;</p>
+</div>
+
+<p> Synopsis : {{ film.synopsis }}</p>
+
+<hr>
+
+{% for critique in film.critiques %}
+    <div class="card bg-light mb-3" style="max-width: 20rem;">
+    <div class="card-header"> 
+        {{ critique.critic.pseudo }}
+        {{ critique.note }}
+    </div>
+    <div class="card-body">
+        <p class="card-text"> {{ critique.critique }}</p>
+    </div>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

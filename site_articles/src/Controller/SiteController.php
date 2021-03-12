@@ -18,25 +18,27 @@ class SiteController extends AbstractController
         $repoB = $this-> getDoctrine()->getRepository(Book::class);
         $repoF = $this-> getDoctrine()->getRepository(Film::class);
         $books = $repoB-> findAll();
+        $films = $repoF-> findAll();
         $i = 1;
         $filmsP1 = array();
         $filmsP2 = array();
-        foreach ($repoF-> findAll() as $value=>$film) {
-            if ($value%2 == 0) {
-            //if ($i%2 == 0) {
-                $filmsP1[$value] = $film;
+        /*
+        foreach ($repoF-> findAll() as $film) {
+            if ($i%2 == 1) {
+                $filmsP1[$i] = $film;
             }
-            elseif ($value%2 == 1) {
-            //elseif ($i%2 == 1) {
-                $filmsP2[$value] = $film;
+            elseif ($i%2 == 0) {
+                $filmsP2[$i] = $film;
             }
             $i++;
         }
-
+*/
         return $this->render('site/index.html.twig', [
             'controller_name' => 'SiteController',
             'books' => $books,
-            'films' => $filmsP1
+            //'filmsP1' => $filmsP1,
+            //'filmsP2' => $filmsP2
+            'films' => $films
         ]);
     }
     /**
@@ -49,12 +51,16 @@ class SiteController extends AbstractController
         ]);
     }
     /**
-     * @Route("/site/article", name="show_article")
+     * @Route("/site/film{id}", name="show_critique_film")
      */
-    public function article(): Response
+    public function film($id): Response
     {
-        return $this->render('site/article.html.twig', [
+        $repo = $this->getDoctrine()->getRepository(Film::class);
+        $article = $repo->find($id);
+
+        return $this->render('site/film.html.twig', [
             'controller_name' => 'SiteController',
+            'film' => $article
         ]);
     }
 }
