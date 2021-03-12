@@ -1,25 +1,24 @@
 {% extends "base.html.twig" %}
 {% block body %}
 
-<h1>{{ film.title }}</h1>
+<h1>{{ book.title }}</h1>
 <div>
     <img src="http://placehold.it/350x200" border="0" ALIGN="Left">
-    <p> &nbsp; Auteur : {{ film.author }}</p>
-    <p> &nbsp; Type : {{ film.type }}</p>
-    <p> &nbsp; Date de sortie : {{ film.releaseDate | date('d/m/y')}}</p>
-    <p> &nbsp; Nationnalité : {{ film.citizenship }}</p>
+    <p> &nbsp; Auteur : {{ book.author }}</p>
+    <p> &nbsp; Type : {{ book.type }}</p>
+    <p> &nbsp; Date de sortie : {{ book.releaseDate | date('d/m/y')}}</p>
+    <p> &nbsp; Nationnalité : {{ book.citizenship }}</p>
     <p> &nbsp; Note : {{ note }}/5</p>
     <p> &nbsp;</p>
 </div>
 
-<h4>Synopsis</h4>
-<p>{{ film.synopsis }}</p>
+
+<h3>Synopsis : </h3>
+<p> {{ book.cover }}</p>
 
 <hr>
-<h4>Critiques</h4>
-<p>&nbsp;</p>
 
-{% for critique in film.critiques %}
+{% for critique in book.critiques %}
     <div class="card bg-light mb-3" style="max-width: 20rem;">
     <div class="card-header"> 
         {{ critique.critic.pseudo }}
@@ -29,6 +28,7 @@
     </div>
     </div>
 {% endfor %}
+
 
 
 {% endblock %}

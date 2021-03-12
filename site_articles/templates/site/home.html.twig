@@ -22,11 +22,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button> 
         </nav>         
-        <div class="container"> {% block body %}
-        <h1> Page d'acceuil </h1>
-        <p> 
-          <a href="{{ path('index') }}">Cliquer ici</a> pour accèder à la liste des articles. 
-        </p>
+        <div class="container"> 
+        {% block body %}
+            <h1> Page d'acceuil </h1>
+            <p> 
+                <a href="{{ path('index_films') }}">Cliquer ici</a> pour accèder à la liste des critiques de film. 
+            </p>
+            <p> 
+                <a href="{{ path('index_books') }}">Cliquer ici</a> pour accèder à la liste des critiques de livre. 
+            </p>
         {% endblock %} </div>
     </body>
 </html>

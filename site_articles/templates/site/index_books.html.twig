@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<h1>Page de critique des livres</h1>
+
+<section class="articles">
+    {% for book in books %}
+      <article>
+        <h3> {{ book.title }}</h3>  
+        <div>
+          <img src="http://placehold.it/200x100">
+        </div>
+        <p>Auteur : {{ book.author }}</p>
+        <p>Type : {{ book.type }}</p>
+        <p>Date de sortie : {{ book.releaseDate | date('d/m/y')}}</p>
+        <p>Nationnalité : {{ book.citizenship }}</p>
+        <a href="{{ path('show_critique_book', {'bookID':book.id}) }}">Lire la suite</a>
+        <hr>
+      </article>
+    {% endfor %}
+  </tbody>
+</section>
+
+
+{% endblock %}

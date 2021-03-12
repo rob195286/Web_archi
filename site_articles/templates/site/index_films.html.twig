@@ -14,7 +14,7 @@
         <p>Type : {{ film.type }}</p>
         <p>Date de sortie : {{ film.releaseDate | date('d/m/y')}}</p>
         <p>Nationnalité : {{ film.citizenship }}</p>
-        <a href="{{ path('show_critique_film', {'id':film.id}) }}">Lire la suite</a>
+        <a href="{{ path('show_critique_film', {'filmID':film.id}) }}">Lire la suite</a>
         <hr>
       </article>
     {% endfor %}
