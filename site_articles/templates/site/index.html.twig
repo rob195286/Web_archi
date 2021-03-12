@@ -1,20 +1,46 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello SiteController!{% endblock %}
-
+{% extends "base.html.twig" %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+ 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Films</th>
+      <th scope="col">Livres</th>
+    </tr>
+  </thead>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+  <tbody>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'A:/3)_Bibliotheque/Documents/Ecam/Anne4/Q2/web_archi2/Web_archi/site_articles/src/Controller/SiteController.php'|file_link(0) }}">src/Controller/SiteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'A:/3)_Bibliotheque/Documents/Ecam/Anne4/Q2/web_archi2/Web_archi/site_articles/templates/site/index.html.twig'|file_link(0) }}">templates/site/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {% for film in filmsP1 %}
+    <tr>
+      <th scope="row">
+        {{ film.title }}
+            {{ film.title }}
+            {{ film.type }}
+            <a href="{{ path('show_article') }}">consulter</a>
+      </th>
+    </tr>
+    
+    {% endfor %}
+
+    <tr class="table-primary">
+      <th scope="row">Active</th>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-primary">
+      <th scope="row">Primary</th>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table>  
+
+<hr>
+
+
+
 {% endblock %}
